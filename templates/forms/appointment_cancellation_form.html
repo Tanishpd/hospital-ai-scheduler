@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Cancellation/Rescheduling Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+        .section { margin-bottom: 25px; border: 1px solid #ddd; padding: 15px; }
+        .section h3 { background-color: #f5f5f5; margin: -15px -15px 15px -15px; padding: 10px; }
+        .form-row { display: flex; margin-bottom: 10px; }
+        .form-group { flex: 1; margin-right: 15px; }
+        .form-group:last-child { margin-right: 0; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="time"], textarea, select {
+            width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
+        }
+        textarea { height: 80px; resize: vertical; }
+        .checkbox-group { display: flex; flex-wrap: wrap; }
+        .checkbox-item { margin-right: 20px; margin-bottom: 10px; }
+        .cancellation-section { background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; margin: 20px 0; }
+        .rescheduling-section { background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; margin: 20px 0; }
+        .policy-section { background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; margin: 20px 0; }
+        .signature-section { border-top: 2px solid #333; margin-top: 30px; padding-top: 20px; }
+        .signature-line { border-bottom: 1px solid #000; width: 300px; height: 20px; display: inline-block; }
+        @media print { .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Healthcare Center</h1>
+        <h2>Appointment Cancellation/Rescheduling Form</h2>
+        <p>Please complete this form to cancel or reschedule your appointment</p>
+    </div>
+
+    <form>
+        <!-- Patient Information -->
+        <div class="section">
+            <h3>Patient Information</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="patientName">Full Name *</label>
+                    <input type="text" id="patientName" name="patientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth *</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="patientId">Patient ID</label>
+                    <input type="text" id="patientId" name="patientId">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmationNumber">Appointment Confirmation Number</label>
+                    <input type="text" id="confirmationNumber" name="confirmationNumber">
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Appointment Details -->
+        <div class="section">
+            <h3>Current Appointment Details</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="currentDate">Appointment Date *</label>
+                    <input type="date" id="currentDate" name="currentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="currentTime">Appointment Time *</label>
+                    <input type="time" id="currentTime" name="currentTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="currentDoctor">Doctor *</label>
+                    <select id="currentDoctor" name="currentDoctor" required>
+                        <option value="">Select...</option>
+                        <option value="Dr. Johnson">Dr. Johnson - Internal Medicine</option>
+                        <option value="Dr. Wilson">Dr. Wilson - Cardiology</option>
+                        <option value="Dr. Smith">Dr. Smith - Pediatrics</option>
+                        <option value="Dr. Davis">Dr. Davis - Dermatology</option>
+                        <option value="Dr. Brown">Dr. Brown - Orthopedics</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="currentReason">Reason for Current Appointment</label>
+                <input type="text" id="currentReason" name="currentReason">
+            </div>
+        </div>
+
+        <!-- Request Type -->
+        <div class="section">
+            <h3>Request Type *</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="radio" id="cancel" name="requestType" value="cancel" required onclick="toggleSections('cancel')">
+                    <label for="cancel">Cancel Appointment</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="radio" id="reschedule" name="requestType" value="reschedule" required onclick="toggleSections('reschedule')">
+                    <label for="reschedule">Reschedule Appointment</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cancellation Section -->
+        <div id="cancellationSection" class="cancellation-section" style="display: none;">
+            <h3>❌ Cancellation Details</h3>
+            <div class="form-group">
+                <label for="cancellationReason">Reason for Cancellation *</label>
+                <select id="cancellationReason" name="cancellationReason">
+                    <option value="">Select reason...</option>
+                    <option value="illness">Patient illness</option>
+                    <option value="emergency">Family emergency</option>
+                    <option value="work_conflict">Work conflict</option>
+                    <option value="travel">Travel conflict</option>
+                    <option value="transportation">Transportation issues</option>
+                    <option value="weather">Weather conditions</option>
+                    <option value="insurance">Insurance issues</option>
+                    <option value="financial">Financial reasons</option>
+                    <option value="no_longer_needed">No longer needed</option>
+                    <option value="doctor_unavailable">Doctor no longer available</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="cancellationDetails">Additional Details</label>
+                <textarea id="cancellationDetails" name="cancellationDetails" placeholder="Please provide any additional information about your cancellation"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="futureAppointment">Do you want to schedule a future appointment?</label>
+                <select id="futureAppointment" name="futureAppointment">
+                    <option value="">Select...</option>
+                    <option value="yes">Yes, I want to reschedule</option>
+                    <option value="no">No, not at this time</option>
+                    <option value="undecided">I'm not sure yet</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Rescheduling Section -->
+        <div id="reschedulingSection" class="rescheduling-section" style="display: none;">
+            <h3>📅 Rescheduling Preferences</h3>
+            <div class="form-group">
+                <label for="rescheduleReason">Reason for Rescheduling *</label>
+                <select id="rescheduleReason" name="rescheduleReason">
+                    <option value="">Select reason...</option>
+                    <option value="illness">Patient illness</option>
+                    <option value="emergency">Family emergency</option>
+                    <option value="work_conflict">Work/schedule conflict</option>
+                    <option value="travel">Travel conflict</option>
+                    <option value="transportation">Transportation issues</option>
+                    <option value="weather">Weather conditions</option>
+                    <option value="personal">Personal reasons</option>
+                    <option value="better_time">Need better time slot</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="preferredDate">Preferred New Date</label>
+                    <input type="date" id="preferredDate" name="preferredDate">
+                </div>
+                <div class="form-group">
+                    <label for="preferredTime">Preferred New Time</label>
+                    <select id="preferredTime" name="preferredTime">
+                        <option value="">Select...</option>
+                        <option value="morning">Morning (9:00 AM - 12:00 PM)</option>
+                        <option value="afternoon">Afternoon (2:00 PM - 5:00 PM)</option>
+                        <option value="anytime">Anytime</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sameDoctor">Same Doctor?</label>
+                    <select id="sameDoctor" name="sameDoctor">
+                        <option value="">Select...</option>
+                        <option value="yes">Yes, same doctor</option>
+                        <option value="no">No, different doctor</option>
+                        <option value="no_preference">No preference</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="alternativeDate1">Alternative Date 1</label>
+                <input type="date" id="alternativeDate1" name="alternativeDate1">
+            </div>
+
+            <div class="form-group">
+                <label for="alternativeDate2">Alternative Date 2</label>
+                <input type="date" id="alternativeDate2" name="alternativeDate2">
+            </div>
+
+            <div class="form-group">
+                <label for="rescheduleDetails">Additional Rescheduling Notes</label>
+                <textarea id="rescheduleDetails" name="rescheduleDetails" placeholder="Any additional information or special requests for your new appointment"></textarea>
+            </div>
+        </div>
+
+        <!-- Notice Period -->
+        <div class="section">
+            <h3>Notice Information</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="noticeGiven">How much advance notice are you providing?</label>
+                    <select id="noticeGiven" name="noticeGiven">
+                        <option value="">Select...</option>
+                        <option value="more_than_24h">More than 24 hours</option>
+                        <option value="12_24h">12-24 hours</option>
+                        <option value="less_than_12h">Less than 12 hours</option>
+                        <option value="same_day">Same day</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="requestDate">Date of This Request</label>
+                    <input type="date" id="requestDate" name="requestDate">
+                </div>
+                <div class="form-group">
+                    <label for="urgency">Urgency Level</label>
+                    <select id="urgency" name="urgency">
+                        <option value="">Select...</option>
+                        <option value="routine">Routine</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="emergency">Emergency</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Preferences -->
+        <div class="section">
+            <h3>Contact Preferences</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="confirmationMethod">How would you like to receive confirmation?</label>
+                    <select id="confirmationMethod" name="confirmationMethod">
+                        <option value="">Select...</option>
+                        <option value="email">Email</option>
+                        <option value="phone">Phone call</option>
+                        <option value="text">Text message</option>
+                        <option value="all">All methods</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bestTimeToCall">Best time to call (if phone selected)</label>
+                    <select id="bestTimeToCall" name="bestTimeToCall">
+                        <option value="">Select...</option>
+                        <option value="morning">Morning (9 AM - 12 PM)</option>
+                        <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
+                        <option value="evening">Evening (5 PM - 7 PM)</option>
+                        <option value="anytime">Anytime</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Policy Information -->
+        <div class="policy-section">
+            <h3>📋 Cancellation Policy</h3>
+            <ul>
+                <li><strong>24-Hour Notice:</strong> We appreciate at least 24 hours advance notice for cancellations or changes.</li>
+                <li><strong>Same-Day Cancellations:</strong> May be subject to a cancellation fee depending on circumstances.</li>
+                <li><strong>No-Show Policy:</strong> Failure to attend or cancel your appointment may result in a $50 no-show fee.</li>
+                <li><strong>Emergency Situations:</strong> Emergency cancellations are always accommodated without penalty.</li>
+                <li><strong>Rescheduling:</strong> We will do our best to accommodate your preferred new appointment time.</li>
+            </ul>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="section">
+            <h3>Additional Information</h3>
+            <div class="form-group">
+                <label for="additionalComments">Additional Comments or Special Circumstances</label>
+                <textarea id="additionalComments" name="additionalComments" placeholder="Any additional information that would help us process your request"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="previousCancellations">Have you cancelled appointments before?</label>
+                <select id="previousCancellations" name="previousCancellations">
+                    <option value="">Select...</option>
+                    <option value="no">No, this is my first cancellation</option>
+                    <option value="rarely">Rarely (1-2 times)</option>
+                    <option value="occasionally">Occasionally (3-5 times)</option>
+                    <option value="frequently">Frequently (more than 5 times)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Patient Acknowledgment -->
+        <div class="signature-section">
+            <h3>Patient Acknowledgment</h3>
+            <p>I acknowledge that I have read and understand the cancellation policy. I certify that the information provided above is true and complete. I understand that:</p>
+            <ul>
+                <li>Cancellations made with less than 24 hours notice may be subject to a fee</li>
+                <li>The office will make every effort to accommodate rescheduling requests</li>
+                <li>I will receive confirmation of this cancellation/rescheduling request</li>
+                <li>If rescheduling, the new appointment is not confirmed until I receive official confirmation</li>
+            </ul>
+            
+            <div style="margin-top: 30px;">
+                <p>Patient Signature: <span class="signature-line"></span> &nbsp;&nbsp;&nbsp; Date: <span class="signature-line"></span></p>
+            </div>
+        </div>
+
+        <div class="no-print" style="margin-top: 30px; text-align: center;">
+            <button type="button" onclick="window.print()">Print Form</button>
+        </div>
+    </form>
+
+    <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #666;">
+        <p><strong>Office Use Only</strong></p>
+        <p>Received: ________ Processed by: ________ Action Taken: ________</p>
+        <p>New Appointment: ________ Confirmation Sent: ________</p>
+    </div>
+
+    <script>
+        function toggleSections(type) {
+            const cancellationSection = document.getElementById('cancellationSection');
+            const reschedulingSection = document.getElementById('reschedulingSection');
+            
+            if (type === 'cancel') {
+                cancellationSection.style.display = 'block';
+                reschedulingSection.style.display = 'none';
+            } else if (type === 'reschedule') {
+                cancellationSection.style.display = 'none';
+                reschedulingSection.style.display = 'block';
+            }
+        }
+
+        // Set today's date as default for request date
+        document.getElementById('requestDate').valueAsDate = new Date();
+    </script>
+</body>
+</html>

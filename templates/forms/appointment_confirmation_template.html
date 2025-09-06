@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmation Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+        .confirmation-box { border: 2px solid #007bff; background-color: #f8f9fa; padding: 20px; margin: 20px 0; }
+        .info-section { margin-bottom: 20px; border: 1px solid #ddd; padding: 15px; }
+        .info-section h3 { background-color: #f5f5f5; margin: -15px -15px 15px -15px; padding: 10px; }
+        .info-row { display: flex; margin-bottom: 10px; }
+        .info-label { font-weight: bold; width: 150px; }
+        .info-value { flex: 1; }
+        .instructions { background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; margin: 20px 0; }
+        .checklist { background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; margin: 20px 0; }
+        .checklist ul { margin: 0; padding-left: 20px; }
+        .contact-info { background-color: #e2e6ea; border: 1px solid #cdd2d7; padding: 15px; margin: 20px 0; }
+        @media print { .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Healthcare Center</h1>
+        <h2>Appointment Confirmation</h2>
+    </div>
+
+    <div class="confirmation-box">
+        <h2 style="color: #007bff; text-align: center; margin-top: 0;">✅ Your Appointment is Confirmed!</h2>
+        <p style="text-align: center; font-size: 18px;">Confirmation Number: <strong style="color: #dc3545;">{{CONFIRMATION_NUMBER}}</strong></p>
+    </div>
+
+    <div class="info-section">
+        <h3>Patient Information</h3>
+        <div class="info-row">
+            <div class="info-label">Patient Name:</div>
+            <div class="info-value">{{PATIENT_NAME}}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Date of Birth:</div>
+            <div class="info-value">{{PATIENT_DOB}}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Phone Number:</div>
+            <div class="info-value">{{PATIENT_PHONE}}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Email Address:</div>
+            <div class="info-value">{{PATIENT_EMAIL}}</div>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h3>Appointment Details</h3>
+        <div class="info-row">
+            <div class="info-label">Doctor:</div>
+            <div class="info-value">{{DOCTOR_NAME}}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Date:</div>
+            <div class="info-value">{{APPOINTMENT_DATE}}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Time:</div>
+            <div class="info-value">{{APPOINTMENT_TIME}}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Duration:</div>
+            <div class="info-value">{{APPOINTMENT_DURATION}} minutes</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Location:</div>
+            <div class="info-value">Healthcare Center<br>123 Medical Drive<br>Health City, HC 12345</div>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h3>Insurance Information</h3>
+        <div class="info-row">
+            <div class="info-label">Insurance Carrier:</div>
+            <div class="info-value">{{INSURANCE_CARRIER}}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Member ID:</div>
+            <div class="info-value">{{MEMBER_ID}}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Group ID:</div>
+            <div class="info-value">{{GROUP_ID}}</div>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <h3>Important Instructions</h3>
+        <ul>
+            <li><strong>Arrive 15 minutes early</strong> for check-in and paperwork</li>
+            <li><strong>Bring your photo ID</strong> and insurance card</li>
+            <li><strong>Complete the intake form</strong> (attached to confirmation email)</li>
+            <li><strong>Bring a list of current medications</strong> including dosages</li>
+            <li><strong>Prepare questions</strong> you want to ask the doctor</li>
+        </ul>
+    </div>
+
+    <div class="checklist">
+        <h3>Pre-Appointment Checklist</h3>
+        <ul style="list-style-type: none;">
+            <li>☐ Intake form completed and ready to bring</li>
+            <li>☐ Insurance card located and ready</li>
+            <li>☐ Photo ID ready</li>
+            <li>☐ Current medication list prepared</li>
+            <li>☐ Questions for doctor written down</li>
+            <li>☐ Previous medical records (if applicable)</li>
+            <li>☐ Payment method for copay</li>
+        </ul>
+    </div>
+
+    <div class="contact-info">
+        <h3>Need to Make Changes?</h3>
+        <p><strong>To reschedule or cancel your appointment:</strong></p>
+        <ul>
+            <li>📞 Phone: (555) 123-4567</li>
+            <li>📧 Email: appointments@healthcarecenter.com</li>
+            <li>🌐 Website: www.healthcarecenter.com</li>
+        </ul>
+        <p><strong>Office Hours:</strong> Monday - Friday: 8:00 AM - 6:00 PM</p>
+        <p style="color: #dc3545;"><strong>Cancellation Policy:</strong> Please provide at least 24 hours notice for cancellations to avoid a cancellation fee.</p>
+    </div>
+
+    <div style="margin-top: 30px; padding: 20px; border-top: 2px solid #333;">
+        <h3>COVID-19 Safety Protocols</h3>
+        <ul>
+            <li>Masks are required in all clinical areas</li>
+            <li>Please wait in your car until your appointment time</li>
+            <li>Hand sanitizer is available throughout the facility</li>
+            <li>If you have COVID-19 symptoms, please call before arriving</li>
+        </ul>
+    </div>
+
+    <div class="no-print" style="margin-top: 30px; text-align: center;">
+        <button type="button" onclick="window.print()">Print Confirmation</button>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #666;">
+        <p>Thank you for choosing Healthcare Center for your medical needs!</p>
+        <p>We look forward to seeing you on {{APPOINTMENT_DATE}} at {{APPOINTMENT_TIME}}</p>
+    </div>
+</body>
+</html>

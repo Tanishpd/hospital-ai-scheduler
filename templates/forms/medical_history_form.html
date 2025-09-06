@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical History Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+        .section { margin-bottom: 25px; border: 1px solid #ddd; padding: 15px; }
+        .section h3 { background-color: #f5f5f5; margin: -15px -15px 15px -15px; padding: 10px; }
+        .form-row { display: flex; margin-bottom: 10px; }
+        .form-group { flex: 1; margin-right: 15px; }
+        .form-group:last-child { margin-right: 0; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input[type="text"], input[type="date"], textarea, select {
+            width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
+        }
+        textarea { height: 60px; resize: vertical; }
+        .checkbox-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+        .checkbox-item { margin-bottom: 5px; }
+        .rating-scale { display: flex; align-items: center; gap: 10px; }
+        .rating-scale input[type="radio"] { margin: 0 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f5f5f5; }
+        @media print { .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Healthcare Center</h1>
+        <h2>Comprehensive Medical History Form</h2>
+        <p>Please complete this form thoroughly and accurately</p>
+    </div>
+
+    <form>
+        <!-- Patient Information -->
+        <div class="section">
+            <h3>Patient Information</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="patientName">Full Name</label>
+                    <input type="text" id="patientName" name="patientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="formDate">Date Form Completed</label>
+                    <input type="date" id="formDate" name="formDate" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chief Complaint -->
+        <div class="section">
+            <h3>Chief Complaint</h3>
+            <div class="form-group">
+                <label for="chiefComplaint">What is your main health concern today?</label>
+                <textarea id="chiefComplaint" name="chiefComplaint" placeholder="Please describe your primary reason for this visit"></textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="symptomDuration">How long have you had this problem?</label>
+                    <input type="text" id="symptomDuration" name="symptomDuration" placeholder="e.g., 2 weeks, 3 months">
+                </div>
+                <div class="form-group">
+                    <label for="painScale">Pain Level (0-10 scale, 0 = no pain, 10 = severe pain)</label>
+                    <div class="rating-scale">
+                        <span>0</span>
+                        <input type="radio" name="painScale" value="0"> <span>1</span>
+                        <input type="radio" name="painScale" value="1"> <span>2</span>
+                        <input type="radio" name="painScale" value="2"> <span>3</span>
+                        <input type="radio" name="painScale" value="3"> <span>4</span>
+                        <input type="radio" name="painScale" value="4"> <span>5</span>
+                        <input type="radio" name="painScale" value="5"> <span>6</span>
+                        <input type="radio" name="painScale" value="6"> <span>7</span>
+                        <input type="radio" name="painScale" value="7"> <span>8</span>
+                        <input type="radio" name="painScale" value="8"> <span>9</span>
+                        <input type="radio" name="painScale" value="9"> <span>10</span>
+                        <input type="radio" name="painScale" value="10">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Past Medical History -->
+        <div class="section">
+            <h3>Past Medical History</h3>
+            <p>Check all conditions that apply to you:</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="diabetes" name="medicalHistory" value="diabetes">
+                    <label for="diabetes">Diabetes</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="hypertension" name="medicalHistory" value="hypertension">
+                    <label for="hypertension">High Blood Pressure</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="heartDisease" name="medicalHistory" value="heart_disease">
+                    <label for="heartDisease">Heart Disease</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="stroke" name="medicalHistory" value="stroke">
+                    <label for="stroke">Stroke</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="cancer" name="medicalHistory" value="cancer">
+                    <label for="cancer">Cancer</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="asthma" name="medicalHistory" value="asthma">
+                    <label for="asthma">Asthma</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="copd" name="medicalHistory" value="copd">
+                    <label for="copd">COPD</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="depression" name="medicalHistory" value="depression">
+                    <label for="depression">Depression</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="anxiety" name="medicalHistory" value="anxiety">
+                    <label for="anxiety">Anxiety</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="arthritis" name="medicalHistory" value="arthritis">
+                    <label for="arthritis">Arthritis</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="thyroid" name="medicalHistory" value="thyroid">
+                    <label for="thyroid">Thyroid Disease</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="kidneyDisease" name="medicalHistory" value="kidney_disease">
+                    <label for="kidneyDisease">Kidney Disease</label>
+                </div>
+            </div>
+            
+            <div class="form-group" style="margin-top: 15px;">
+                <label for="otherConditions">Other medical conditions not listed above:</label>
+                <textarea id="otherConditions" name="otherConditions"></textarea>
+            </div>
+        </div>
+
+        <!-- Surgical History -->
+        <div class="section">
+            <h3>Surgical History</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Surgery/Procedure</th>
+                        <th>Date (Year)</th>
+                        <th>Hospital/Facility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><input type="text" name="surgery1"></td><td><input type="text" name="surgeryDate1"></td><td><input type="text" name="surgeryHospital1"></td></tr>
+                    <tr><td><input type="text" name="surgery2"></td><td><input type="text" name="surgeryDate2"></td><td><input type="text" name="surgeryHospital2"></td></tr>
+                    <tr><td><input type="text" name="surgery3"></td><td><input type="text" name="surgeryDate3"></td><td><input type="text" name="surgeryHospital3"></td></tr>
+                    <tr><td><input type="text" name="surgery4"></td><td><input type="text" name="surgeryDate4"></td><td><input type="text" name="surgeryHospital4"></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Current Medications -->
+        <div class="section">
+            <h3>Current Medications</h3>
+            <p>List all medications, vitamins, supplements, and over-the-counter drugs:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Medication Name</th>
+                        <th>Dosage</th>
+                        <th>Frequency</th>
+                        <th>Reason for Taking</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><input type="text" name="med1"></td><td><input type="text" name="dose1"></td><td><input type="text" name="freq1"></td><td><input type="text" name="reason1"></td></tr>
+                    <tr><td><input type="text" name="med2"></td><td><input type="text" name="dose2"></td><td><input type="text" name="freq2"></td><td><input type="text" name="reason2"></td></tr>
+                    <tr><td><input type="text" name="med3"></td><td><input type="text" name="dose3"></td><td><input type="text" name="freq3"></td><td><input type="text" name="reason3"></td></tr>
+                    <tr><td><input type="text" name="med4"></td><td><input type="text" name="dose4"></td><td><input type="text" name="freq4"></td><td><input type="text" name="reason4"></td></tr>
+                    <tr><td><input type="text" name="med5"></td><td><input type="text" name="dose5"></td><td><input type="text" name="freq5"></td><td><input type="text" name="reason5"></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Allergies -->
+        <div class="section">
+            <h3>Allergies</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Allergen (Drug, Food, Environmental)</th>
+                        <th>Reaction</th>
+                        <th>Severity (Mild/Moderate/Severe)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><input type="text" name="allergen1"></td><td><input type="text" name="reaction1"></td><td><input type="text" name="severity1"></td></tr>
+                    <tr><td><input type="text" name="allergen2"></td><td><input type="text" name="reaction2"></td><td><input type="text" name="severity2"></td></tr>
+                    <tr><td><input type="text" name="allergen3"></td><td><input type="text" name="reaction3"></td><td><input type="text" name="severity3"></td></tr>
+                    <tr><td><input type="text" name="allergen4"></td><td><input type="text" name="reaction4"></td><td><input type="text" name="severity4"></td></tr>
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 10px;">
+                <input type="checkbox" id="noAllergies" name="noAllergies" value="true">
+                <label for="noAllergies">No known allergies</label>
+            </div>
+        </div>
+
+        <!-- Social History -->
+        <div class="section">
+            <h3>Social History</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="smoking">Tobacco Use:</label>
+                    <select id="smoking" name="smoking">
+                        <option value="">Select...</option>
+                        <option value="never">Never smoked</option>
+                        <option value="former">Former smoker</option>
+                        <option value="current">Current smoker</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="smokingDetails">If current/former smoker, details:</label>
+                    <input type="text" id="smokingDetails" name="smokingDetails" placeholder="Packs per day, years smoked">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="alcohol">Alcohol Use:</label>
+                    <select id="alcohol" name="alcohol">
+                        <option value="">Select...</option>
+                        <option value="none">No alcohol</option>
+                        <option value="occasional">Occasional (1-2 drinks/week)</option>
+                        <option value="moderate">Moderate (3-7 drinks/week)</option>
+                        <option value="heavy">Heavy (>7 drinks/week)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exercise">Exercise Frequency:</label>
+                    <select id="exercise" name="exercise">
+                        <option value="">Select...</option>
+                        <option value="none">No regular exercise</option>
+                        <option value="1-2">1-2 times per week</option>
+                        <option value="3-4">3-4 times per week</option>
+                        <option value="5+">5+ times per week</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="occupation">Occupation:</label>
+                <input type="text" id="occupation" name="occupation">
+            </div>
+        </div>
+
+        <!-- Review of Systems -->
+        <div class="section">
+            <h3>Review of Systems</h3>
+            <p>Check any symptoms you have experienced in the past month:</p>
+            
+            <h4>General</h4>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="fatigue" name="symptoms" value="fatigue">
+                    <label for="fatigue">Fatigue</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="weightLoss" name="symptoms" value="weight_loss">
+                    <label for="weightLoss">Weight Loss</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="weightGain" name="symptoms" value="weight_gain">
+                    <label for="weightGain">Weight Gain</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="fever" name="symptoms" value="fever">
+                    <label for="fever">Fever</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="chills" name="symptoms" value="chills">
+                    <label for="chills">Chills</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="nightSweats" name="symptoms" value="night_sweats">
+                    <label for="nightSweats">Night Sweats</label>
+                </div>
+            </div>
+            
+            <h4>Cardiovascular</h4>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="chestPain" name="symptoms" value="chest_pain">
+                    <label for="chestPain">Chest Pain</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="palpitations" name="symptoms" value="palpitations">
+                    <label for="palpitations">Palpitations</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="shortBreath" name="symptoms" value="shortness_breath">
+                    <label for="shortBreath">Shortness of Breath</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="legSwelling" name="symptoms" value="leg_swelling">
+                    <label for="legSwelling">Leg Swelling</label>
+                </div>
+            </div>
+            
+            <h4>Respiratory</h4>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="cough" name="symptoms" value="cough">
+                    <label for="cough">Cough</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="wheezing" name="symptoms" value="wheezing">
+                    <label for="wheezing">Wheezing</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="sputum" name="symptoms" value="sputum">
+                    <label for="sputum">Sputum Production</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patient Signature -->
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #333;">
+            <p>I certify that the above information is accurate and complete to the best of my knowledge.</p>
+            <div style="margin-top: 20px;">
+                <p>Patient Signature: _________________________________ &nbsp;&nbsp;&nbsp; Date: _________________</p>
+            </div>
+        </div>
+
+        <div class="no-print" style="margin-top: 30px; text-align: center;">
+            <button type="button" onclick="window.print()">Print Form</button>
+        </div>
+    </form>
+</body>
+</html>

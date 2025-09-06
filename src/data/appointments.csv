@@ -1,0 +1,2 @@
+appointment_id,patient_id,patient_name,doctor,date,time,duration,status,insurance_verified,confirmation_sent,created_at
+APT20250906171136,1,Tanish P D,Dr. Wilson,2025-09-05,9:00 AM,45 minutes,Confirmed,Verified,True,2025-09-06T17:11:36.403472

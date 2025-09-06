@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Patient Intake Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+        .section { margin-bottom: 25px; border: 1px solid #ddd; padding: 15px; }
+        .section h3 { background-color: #f5f5f5; margin: -15px -15px 15px -15px; padding: 10px; }
+        .form-row { display: flex; margin-bottom: 10px; }
+        .form-group { flex: 1; margin-right: 15px; }
+        .form-group:last-child { margin-right: 0; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], textarea, select {
+            width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
+        }
+        textarea { height: 80px; resize: vertical; }
+        .checkbox-group { display: flex; flex-wrap: wrap; }
+        .checkbox-item { margin-right: 20px; margin-bottom: 10px; }
+        .signature-section { border-top: 2px solid #333; margin-top: 30px; padding-top: 20px; }
+        .signature-line { border-bottom: 1px solid #000; width: 300px; height: 20px; display: inline-block; }
+        @media print { .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Healthcare Center</h1>
+        <h2>New Patient Intake Form</h2>
+        <p>Please complete this form and bring it to your appointment</p>
+    </div>
+
+    <form>
+        <!-- Patient Information -->
+        <div class="section">
+            <h3>Patient Information</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="middleName">Middle Name</label>
+                    <input type="text" id="middleName" name="middleName">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="dob">Date of Birth *</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender">
+                        <option value="">Select...</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="prefer-not-to-say">Prefer not to say</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ssn">Social Security Number</label>
+                    <input type="text" id="ssn" name="ssn" placeholder="XXX-XX-XXXX">
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="section">
+            <h3>Contact Information</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="address">Street Address *</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="city">City *</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State *</label>
+                    <input type="text" id="state" name="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="zipcode">ZIP Code *</label>
+                    <input type="text" id="zipcode" name="zipcode" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Primary Phone *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="altPhone">Alternative Phone</label>
+                    <input type="tel" id="altPhone" name="altPhone">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insurance Information -->
+        <div class="section">
+            <h3>Insurance Information</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="insuranceCarrier">Insurance Carrier *</label>
+                    <input type="text" id="insuranceCarrier" name="insuranceCarrier" required>
+                </div>
+                <div class="form-group">
+                    <label for="memberId">Member ID *</label>
+                    <input type="text" id="memberId" name="memberId" required>
+                </div>
+                <div class="form-group">
+                    <label for="groupNumber">Group Number</label>
+                    <input type="text" id="groupNumber" name="groupNumber">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="policyHolder">Policy Holder Name</label>
+                    <input type="text" id="policyHolder" name="policyHolder">
+                </div>
+                <div class="form-group">
+                    <label for="relationship">Relationship to Patient</label>
+                    <select id="relationship" name="relationship">
+                        <option value="">Select...</option>
+                        <option value="self">Self</option>
+                        <option value="spouse">Spouse</option>
+                        <option value="child">Child</option>
+                        <option value="parent">Parent</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Contact -->
+        <div class="section">
+            <h3>Emergency Contact</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="emergencyName">Full Name *</label>
+                    <input type="text" id="emergencyName" name="emergencyName" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyRelationship">Relationship *</label>
+                    <input type="text" id="emergencyRelationship" name="emergencyRelationship" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyPhone">Phone Number *</label>
+                    <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical History -->
+        <div class="section">
+            <h3>Medical History</h3>
+            <div class="form-group">
+                <label for="primaryConcern">Reason for Today's Visit</label>
+                <textarea id="primaryConcern" name="primaryConcern" placeholder="Please describe your main concern or reason for scheduling this appointment"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="medicalHistory">Past Medical History</label>
+                <textarea id="medicalHistory" name="medicalHistory" placeholder="List any significant medical conditions, surgeries, or hospitalizations"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="medications">Current Medications</label>
+                <textarea id="medications" name="medications" placeholder="List all medications, vitamins, and supplements you are currently taking"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="allergies">Allergies</label>
+                <textarea id="allergies" name="allergies" placeholder="List any known allergies to medications, foods, or other substances"></textarea>
+            </div>
+        </div>
+
+        <!-- Family History -->
+        <div class="section">
+            <h3>Family History</h3>
+            <p>Please check if any immediate family members have had the following conditions:</p>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="famHeartDisease" name="familyHistory" value="heart_disease">
+                    <label for="famHeartDisease">Heart Disease</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="famDiabetes" name="familyHistory" value="diabetes">
+                    <label for="famDiabetes">Diabetes</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="famCancer" name="familyHistory" value="cancer">
+                    <label for="famCancer">Cancer</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="famStroke" name="familyHistory" value="stroke">
+                    <label for="famStroke">Stroke</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="famHypertension" name="familyHistory" value="hypertension">
+                    <label for="famHypertension">High Blood Pressure</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="famMentalHealth" name="familyHistory" value="mental_health">
+                    <label for="famMentalHealth">Mental Health Conditions</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lifestyle -->
+        <div class="section">
+            <h3>Lifestyle Information</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="smoking">Do you smoke or use tobacco?</label>
+                    <select id="smoking" name="smoking">
+                        <option value="">Select...</option>
+                        <option value="never">Never</option>
+                        <option value="former">Former smoker</option>
+                        <option value="current">Current smoker</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="alcohol">Alcohol consumption</label>
+                    <select id="alcohol" name="alcohol">
+                        <option value="">Select...</option>
+                        <option value="none">None</option>
+                        <option value="occasional">Occasional</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="heavy">Heavy</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exercise">Exercise frequency</label>
+                    <select id="exercise" name="exercise">
+                        <option value="">Select...</option>
+                        <option value="none">None</option>
+                        <option value="1-2_times">1-2 times per week</option>
+                        <option value="3-4_times">3-4 times per week</option>
+                        <option value="daily">Daily</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consent and Signature -->
+        <div class="signature-section">
+            <h3>Patient Consent and Signature</h3>
+            <p>I certify that the information provided above is true and complete to the best of my knowledge. I understand that this information will be used to provide medical care and treatment.</p>
+            
+            <div style="margin-top: 30px;">
+                <p>Patient Signature: <span class="signature-line"></span> &nbsp;&nbsp;&nbsp; Date: <span class="signature-line"></span></p>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <p>Parent/Guardian Signature (if patient is under 18): <span class="signature-line"></span></p>
+            </div>
+        </div>
+
+        <div class="no-print" style="margin-top: 30px; text-align: center;">
+            <button type="button" onclick="window.print()">Print Form</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,8 @@
+appointment_id,patient_id,patient_name,doctor,date,time,duration,status,insurance_verified,confirmation_sent,created_at
+SAMPLE001,1,John Smith,Dr. Johnson,2025-09-03,10:00,60,Confirmed,True,True,2025-09-03T00:01:49.506027
+SAMPLE002,2,Sarah Davis,Dr. Wilson,2025-09-04,14:00,30,Confirmed,True,True,2025-09-03T00:01:49.512019
+F4F03C4B,8,John Smith,Dr. Johnson,2025-09-04,09:00,60,Confirmed,True,True,
+SAMPLE001,1,John Smith,Dr. Johnson,2025-09-03,10:00,60,Confirmed,True,True,2025-09-03T00:02:12.362122
+SAMPLE002,2,Sarah Davis,Dr. Wilson,2025-09-04,14:00,30,Confirmed,True,True,2025-09-03T00:02:12.364286
+80BF1676,6,John Smith,Dr. Johnson,2025-09-04,09:00,30,Confirmed,True,True,
+APT20250903181819,51,Tanish P D,Dr. Wilson,2025-09-05,9:00 AM,45 minutes,Confirmed,Verified,True,2025-09-03T18:18:19.157851
