@@ -34,8 +34,8 @@ An intelligent medical appointment scheduling system powered by LangGraph and St
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Tanishpd/AI-Scheduling-Agent-for-Hospitals.git
-   cd AI-Scheduling-Agent-for-Hospitals
+   git clone https://github.com/Tanishpd/hospital-ai-scheduler.git
+   cd hospital-ai-scheduler
    ```
 
 2. **Set up virtual environment**
@@ -226,7 +226,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For support, please open an issue on GitHub or contact:
 - Email: support@yourorganization.com
-- GitHub Issues: [Create an issue](https://github.com/Tanishpd/AI-Scheduling-Agent-for-Hospitals/issues)
+- GitHub Issues: [Create an issue](https://github.com/Tanishpd/hospital-ai-scheduler/issues)
 
 ## 🙏 Acknowledgments
 
